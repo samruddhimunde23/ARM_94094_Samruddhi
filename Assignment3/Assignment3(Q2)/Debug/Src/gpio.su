@@ -1,0 +1,2 @@
+../Src/gpio.c:10:6:led_init	4	static
+../Src/gpio.c:24:7:toggle	4	static
