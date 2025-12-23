@@ -64,8 +64,8 @@ all: main-build
 main-build: All_LED_Blinking.elf secondary-outputs
 
 # Tool invocations
-All_LED_Blinking.elf All_LED_Blinking.map: $(OBJS) $(USER_OBJS) D:\STM32F407G\Day7-(Assign3(Q5))\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "All_LED_Blinking.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\STM32F407G\Day7-(Assign3(Q5))\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="All_LED_Blinking.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+All_LED_Blinking.elf All_LED_Blinking.map: $(OBJS) $(USER_OBJS) C:\Users\samru\OneDrive\Desktop\sunbeam\ARM_94094_Samruddhi\Assignment5\Day7-(Assign3(Q5))\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "All_LED_Blinking.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\samru\OneDrive\Desktop\sunbeam\ARM_94094_Samruddhi\Assignment5\Day7-(Assign3(Q5))\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="All_LED_Blinking.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
