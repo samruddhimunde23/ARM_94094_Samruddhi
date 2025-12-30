@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Basic LCD Display
+BUILD_ARTIFACT_NAME := LM35_LCD
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-Basic\ LCD\ Display.elf \
+LM35_LCD.elf \
 
 MAP_FILES += \
-Basic\ LCD\ Display.map \
+LM35_LCD.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-Basic\ LCD\ Display.list \
+LM35_LCD.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: Basic\ LCD\ Display.elf secondary-outputs
+main-build: LM35_LCD.elf secondary-outputs
 
 # Tool invocations
-Basic\ LCD\ Display.elf Basic\ LCD\ Display.map: $(OBJS) $(USER_OBJS) C:\Users\samru\OneDrive\Desktop\sunbeam\ARM_94094_Samruddhi\Assignment8\Assignment8(Q1)\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Basic LCD Display.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\samru\OneDrive\Desktop\sunbeam\ARM_94094_Samruddhi\Assignment8\Assignment8(Q1)\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Basic LCD Display.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LM35_LCD.elf LM35_LCD.map: $(OBJS) $(USER_OBJS) D:\STM32F407G\LM35_LCD\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LM35_LCD.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\STM32F407G\LM35_LCD\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LM35_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Basic\ LCD\ Display.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Basic LCD Display.list"
+LM35_LCD.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "LM35_LCD.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Basic\ LCD\ Display.elf Basic\ LCD\ Display.list Basic\ LCD\ Display.map Basic\\ LCD\\ Display.elf default.size.stdout
+	-$(RM) LM35_LCD.elf LM35_LCD.list LM35_LCD.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

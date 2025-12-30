@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Basic LCD Display
+BUILD_ARTIFACT_NAME := MQ2_Buzzer
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-Basic\ LCD\ Display.elf \
+MQ2_Buzzer.elf \
 
 MAP_FILES += \
-Basic\ LCD\ Display.map \
+MQ2_Buzzer.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-Basic\ LCD\ Display.list \
+MQ2_Buzzer.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: Basic\ LCD\ Display.elf secondary-outputs
+main-build: MQ2_Buzzer.elf secondary-outputs
 
 # Tool invocations
-Basic\ LCD\ Display.elf Basic\ LCD\ Display.map: $(OBJS) $(USER_OBJS) C:\Users\samru\OneDrive\Desktop\sunbeam\ARM_94094_Samruddhi\Assignment8\Assignment8(Q1)\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Basic LCD Display.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\samru\OneDrive\Desktop\sunbeam\ARM_94094_Samruddhi\Assignment8\Assignment8(Q1)\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Basic LCD Display.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+MQ2_Buzzer.elf MQ2_Buzzer.map: $(OBJS) $(USER_OBJS) C:\Users\samru\STM32CubeIDE_1.19.0\STM32CubeIDE\MQ2_Buzzer\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "MQ2_Buzzer.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\samru\STM32CubeIDE_1.19.0\STM32CubeIDE\MQ2_Buzzer\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MQ2_Buzzer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Basic\ LCD\ Display.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Basic LCD Display.list"
+MQ2_Buzzer.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "MQ2_Buzzer.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Basic\ LCD\ Display.elf Basic\ LCD\ Display.list Basic\ LCD\ Display.map Basic\\ LCD\\ Display.elf default.size.stdout
+	-$(RM) MQ2_Buzzer.elf MQ2_Buzzer.list MQ2_Buzzer.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
