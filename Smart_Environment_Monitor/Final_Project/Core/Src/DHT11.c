@@ -59,13 +59,8 @@ static void DHT11_Pin_Input(void)
 /* ---------- Initialization ---------- */
 void DHT11_Init(void)
 {
-	extern UART_HandleTypeDef huart2;
+	    DWT_Delay_Init();   
 
-    if(DWT_Delay_Init()!= 0) {
-  	  HAL_UART_Transmit(&huart2, (uint8_t*)"DWT FAIL.\r\n", 11, HAL_MAX_DELAY);
-  	  return;
-    }
-    HAL_UART_Transmit(&huart2, (uint8_t*)"DWT WORK.\r\n", 11, HAL_MAX_DELAY);
 }
 
 /* ---------- Read one byte ---------- */
